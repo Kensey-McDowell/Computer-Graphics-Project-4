@@ -3,7 +3,9 @@
 
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-// import createAlienMesh from 'alien.js';
+// import createAlienMesh from './alien.js';
+import createUFOGroup from "./ufo.js";
+import createGroundGroup from "./ground.js";
 
 // INITIALIZE THE SCENE, CAMERA, AND RENDERER ---------------------------------
 
@@ -22,9 +24,12 @@ document.body.appendChild(renderer.domElement); // adds renderer to html
 
 // ADD OBJECTS ----------------------------------------------------------------
 
+const ground = createGroundGroup();
+scene.add(ground);
 // scene.add(cow);
 // scene.add(fence);
-// scene.add(ufo);
+const ufo = createUFOGroup();
+scene.add(ufo);
 // alien = createAlienMesh();
 // scene.add(alien);
 
@@ -34,7 +39,7 @@ document.body.appendChild(renderer.domElement); // adds renderer to html
 // const cube = new THREE.Mesh( geometry, material );
 // scene.add( cube );
 
-camera.position.z = 10;
+camera.position.z = 25;
 
 
 // RENDER ---------------------------------------------------------------------

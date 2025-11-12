@@ -1,7 +1,8 @@
 // A.I. Disclaimer: All work for this assignment was completed by myself and entirely without
 // the use of artificial intelligence tools such as ChatGPT, MS Copilot, other LLMs, etc.
 
-import * as THREE from 'three';
+import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 // import createAlienMesh from 'alien.js';
 
 // INITIALIZE THE SCENE, CAMERA, AND RENDERER ---------------------------------
@@ -26,13 +27,24 @@ document.body.appendChild(renderer.domElement); // adds renderer to html
 // scene.add(ufo);
 // alien = createAlienMesh();
 // scene.add(alien);
-const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-const cube = new THREE.Mesh( geometry, material );
-scene.add( cube );
+
+// EXAMPlE
+// const geometry = new THREE.BoxGeometry( 10, 10, 10 );
+// const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+// const cube = new THREE.Mesh( geometry, material );
+// scene.add( cube );
+
+camera.position.z = 10;
+
 
 // RENDER ---------------------------------------------------------------------
 
-camera.position.z = 5;
+const controls = new OrbitControls(camera, renderer.domElement);
 
-renderer.render(scene, camera);
+function animate() {
+    requestAnimationFrame(animate);
+    controls.update();
+    renderer.render(scene, camera);
+}
+
+animate();

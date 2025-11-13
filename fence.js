@@ -1,23 +1,54 @@
 // A.I. Disclaimer: All work for this assignment was completed by myself and entirely without
 // the use of artificial intelligence tools such as ChatGPT, MS Copilot, other LLMs, etc.
 
-import * as THREE from 'three';
+import * as THREE from "three";
 
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+export default function createFenceGroup() { 
+  const fence = new THREE.Group();
 
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize( window.innerWidth, window.innerHeight );
-document.body.appendChild( renderer.domElement );
+  const postMaterial = new THREE.MeshBasicMaterial({ color: new THREE.Color("#786954") }); // brown
+  const railMaterial = new THREE.MeshBasicMaterial({ color: new THREE.Color("#786954") }); // brown
+  const coneMaterial = new THREE.MeshBasicMaterial({ color: new THREE.Color("#d6bd9a") }); // light brown
 
-const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-const cube = new THREE.Mesh( geometry, material );
-scene.add( cube );
+  // Verticle posts
+  const postGeometry = new THREE.CylinderGeometry(0.3, 0.3, 6, 16);
+  const postLeft = new THREE.Mesh(postGeometry, postMaterial);
+  postLeft.position.set(-4, 3, 0);
+  fence.add(postLeft);
 
-camera.position.z = 5;
+  const postRight = new THREE.Mesh(postGeometry, postMaterial);
+  postRight.position.set(4, 3, 0);
+  fence.add(postRight);
 
-function animate() {
-  renderer.render( scene, camera );
+  // Horizontal rails 
+  const railGeometry = new THREE.BoxGeometry(8, 0.3, 0.5);
+  const railTop = new THREE.Mesh(railGeometry, railMaterial);
+  railTop.position.set(0, 4.5, 0);
+  fence.add(railTop);
+
+  const railBottom = new THREE.Mesh(railGeometry, railMaterial);
+  railBottom.position.set(0, 2, 0);
+  fence.add(railBottom);
+
+  // Diagonal brace 
+  const braceGeometry = new THREE.BoxGeometry(8, 0.25, 0.5);
+  const brace = new THREE.Mesh(braceGeometry, railMaterial);
+  brace.rotation.z = Math.PI / 9; // tilt slightly
+  brace.position.set(0, 3.2, 0); // set between rails
+  fence.add(brace);
+
+  // Cone tops 
+  const coneGeometry = new THREE.ConeGeometry(0.35, 1, 16);
+  const coneLeft = new THREE.Mesh(coneGeometry, coneMaterial);
+  coneLeft.position.set(-4, 6.5, 0);
+  fence.add(coneLeft);
+
+  const coneRight = new THREE.Mesh(coneGeometry, coneMaterial);
+  coneRight.position.set(4, 6.5, 0);
+  fence.add(coneRight);
+
+  fence.scale.set(0.4, 0.4, 0.4);
+  fence.position.set(8, 0, 10); // move the fence forward
+
+  return fence;
 }
-renderer.setAnimationLoop( animate );

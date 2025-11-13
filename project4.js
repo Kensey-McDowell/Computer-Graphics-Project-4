@@ -5,6 +5,8 @@ import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 // import createAlienMesh from './alien.js';
 import createUFOGroup from "./ufo.js";
+import createFenceGroup from "./fence.js";
+import createAlienMesh from "./alien.js";
 import createGroundGroup from "./ground.js";
 
 // INITIALIZE THE SCENE, CAMERA, AND RENDERER ---------------------------------
@@ -27,11 +29,12 @@ document.body.appendChild(renderer.domElement); // adds renderer to html
 const ground = createGroundGroup();
 scene.add(ground);
 // scene.add(cow);
-// scene.add(fence);
+const fence = createFenceGroup();
+scene.add(fence)
 const ufo = createUFOGroup();
 scene.add(ufo);
-// alien = createAlienMesh();
-// scene.add(alien);
+const alien = createAlienMesh();
+scene.add(alien);
 
 // EXAMPlE
 // const geometry = new THREE.BoxGeometry( 10, 10, 10 );

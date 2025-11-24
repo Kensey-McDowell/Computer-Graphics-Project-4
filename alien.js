@@ -75,7 +75,7 @@ export default function createAlienMesh() {
 
   // Eyes
   const eyeGeometry = new THREE.SphereGeometry(0.25, 8, 8);
-  const eyeMaterial = new THREE.MeshBasicMaterial({ color: 0x000000 });
+  const eyeMaterial = new THREE.MeshStandardMaterial({ color: 0x000000 });
 
   const leftEye = new THREE.Mesh(eyeGeometry, eyeMaterial);
   leftEye.position.set(-0.3, 2.6, 0.85);
@@ -116,12 +116,12 @@ export default function createAlienMesh() {
   bodyGeometry.setIndex(bodyIndices);
   bodyGeometry.computeVertexNormals();
 
-  const bodyMaterial = new THREE.MeshBasicMaterial({ color: 0x1e90ff, side: THREE.DoubleSide });
+  const bodyMaterial = new THREE.MeshStandardMaterial({ color: 0x1e90ff, side: THREE.DoubleSide });
   const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
   alien.add(body);
 
   alien.scale.set(1, 1, 1);
-  alien.position.set(-4, 0, 4);
+  alien.position.set(0, 10, 0);
 
   return alien;
 }

@@ -7,9 +7,9 @@ import * as THREE from "three";
 export default function createFenceGroup() { 
   const fence = new THREE.Group();
 
-  const postMaterial = new THREE.MeshBasicMaterial({ color: new THREE.Color("#786954") }); // brown
-  const railMaterial = new THREE.MeshBasicMaterial({ color: new THREE.Color("#786954") }); // brown
-  const coneMaterial = new THREE.MeshBasicMaterial({ color: new THREE.Color("#d6bd9a") }); // light brown
+  const postMaterial = new THREE.MeshStandardMaterial({ color: new THREE.Color("#786954") }); // brown
+  const railMaterial = new THREE.MeshStandardMaterial({ color: new THREE.Color("#786954") }); // brown
+  const coneMaterial = new THREE.MeshStandardMaterial({ color: new THREE.Color("#d6bd9a") }); // light brown
 
   // Verticle posts
   const postGeometry = new THREE.CylinderGeometry(0.3, 0.3, 6, 16);
@@ -49,7 +49,6 @@ export default function createFenceGroup() {
   fence.add(coneRight);
 
   fence.scale.set(0.4, 0.4, 0.4);
-  fence.position.set(8, 0, 10); // move the fence forward
 
   return fence;
 }

@@ -5,8 +5,8 @@
 
 import * as THREE from "three";
 
-const mat_brown = new THREE.MeshBasicMaterial({color: 0x140d07});
-const mat_green = new THREE.MeshBasicMaterial({color: 0x1a2421});
+const mat_brown = new THREE.MeshStandardMaterial({color: 0x140d07});
+const mat_green = new THREE.MeshStandardMaterial({color: 0x1a2421});
 
 function createTreeMesh(){
   const tree = new THREE.Group();

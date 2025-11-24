@@ -5,9 +5,9 @@
 
 import * as THREE from "three";
 
-const mat_light_grey = new THREE.MeshBasicMaterial({ color: 0xa0a8b0 });
-const mat_dark_grey = new THREE.MeshBasicMaterial({ color: 0x636363 });
-const translucent_light_blue = new THREE.MeshBasicMaterial({
+const mat_light_grey = new THREE.MeshStandardMaterial({ color: 0xa0a8b0 });
+const mat_dark_grey = new THREE.MeshStandardMaterial({ color: 0x636363 });
+const translucent_light_blue = new THREE.MeshStandardMaterial({
     color: 0x89cff0,
     transparent: true,
     opacity: 0.5

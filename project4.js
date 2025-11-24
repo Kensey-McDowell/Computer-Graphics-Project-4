@@ -11,9 +11,12 @@ import createFenceGroup from "./fence.js";
 import createAlienMesh from "./alien.js";
 import createCowGroup from "./cow.js";
 import createTreeMesh from "./tree.js";
+import createUFOSign from "./sign.js";
+import createPoopSwirl from "./poop.js";
 
 
 const TREECOUNT = 10;
+const SPACING = 3.2;
 
 // INITIALIZE THE SCENE, CAMERA, AND RENDERER ---------------------------------
 
@@ -31,30 +34,47 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement); // adds renderer to html
 
+const moonLight = new THREE.DirectionalLight(0xccccff, 3);
+moonLight.position.set(20, 40, 20);
+moonLight.castShadow = true;
+scene.add(moonLight);
+
 // ADD OBJECTS ----------------------------------------------------------------
 
 const ground = createGroundGroup();
 scene.add(ground);
+fenceline(2, SPACING, 5.3, 0, 10);
+fenceline(2, SPACING, -8.5, 0, 10);
 const cow = createCowGroup();
-
 const cow_start_y_pos = 4;
 cow.position.set(0.0, cow_start_y_pos, 0.0);
 scene.add(cow);
-const fence = createFenceGroup();
-scene.add(fence)
 const ufo = createUFOGroup();
 scene.add(ufo);
 const alien = createAlienMesh();
 scene.add(alien);
 scatterTrees(-10, 10, -25, -10);
-
-// EXAMPLE
-// const geometry = new THREE.BoxGeometry( 10, 10, 10 );
-// const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-// const cube = new THREE.Mesh( geometry, material );
-// scene.add( cube );
+const warningsignsign = createUFOSign();
+scene.add(warningsignsign);
+const poopswirl = createPoopSwirl();
+scene.add(poopswirl);
 
 camera.position.z = 20;
+
+function fenceline(numberOfSegments, spacing, startX, startY, startZ) {
+    
+    // Looping to create fenceline
+    for (let i = 0; i < numberOfSegments; i++) {
+        // Create fence group
+        const fenceSegment = createFenceGroup(); 
+
+        // Calculate next segment position
+        const newX = startX + (spacing * i);
+
+        fenceSegment.position.set(newX, startY, startZ);
+        scene.add(fenceSegment);
+    }
+}
 
 function scatterTrees(x_min, x_max, z_min, z_max){
 

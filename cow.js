@@ -29,7 +29,6 @@ function createCowGroup(){
 
   // head
   const head_vertices = new Float32Array([
-    
     // right side ----------
 
     // forehead

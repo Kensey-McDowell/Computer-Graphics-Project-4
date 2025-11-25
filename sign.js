@@ -18,8 +18,8 @@ export default function createUFOSign() {
 
     // Extrude into a 3D sign 
     const extrudeSettings = {
-        depth: 0.3,
-        bevelEnabled: false,
+        depth: 0.2,
+        bevelEnabled: true,
     };
 
     const signGeometry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
@@ -53,7 +53,7 @@ export default function createUFOSign() {
     // Add pole 
     const pole = new THREE.Mesh(
         new THREE.CylinderGeometry(0.1, 0.1, 2.75),
-        new THREE.MeshStandardMaterial({ color: 0x888888 })
+        new THREE.MeshStandardMaterial({ color: 0x888888, metalness: 1.0, roughness: 0.5 })
     );
 
     warningsign.add(pole);

@@ -13,6 +13,9 @@ import createCowGroup from "./cow.js";
 import createTreeMesh from "./tree.js";
 import createUFOSign from "./sign.js";
 import createPoopSwirl from "./poop.js";
+import createHayBale from "./haybale.js";
+import createWaterTrough from "./waterTrough.js";
+import createPitchfork from "./pitchfork.js";
 
 
 const TREECOUNT = 10;
@@ -35,7 +38,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement); // adds renderer to html
 
 const moonLight = new THREE.DirectionalLight(0xccccff, 3);
-moonLight.position.set(20, 40, 20);
+moonLight.position.set(5, 30, 5);
 moonLight.castShadow = true;
 scene.add(moonLight);
 
@@ -58,6 +61,19 @@ const warningsignsign = createUFOSign();
 scene.add(warningsignsign);
 const poopswirl = createPoopSwirl();
 scene.add(poopswirl);
+const haybale = createHayBale();
+haybale.position.set(8.5, 1.4, 5);
+scene.add(haybale);
+const haybale2 = createHayBale();
+haybale2.position.set(8.5, 1.4, 8);
+scene.add(haybale2);
+const haybale3 = createHayBale();
+haybale3.position.set(8.5, 3.7, 6.5);
+scene.add(haybale3);
+const water = createWaterTrough();
+scene.add(water);
+const fork = createPitchfork();
+scene.add(fork);
 
 camera.position.z = 20;
 

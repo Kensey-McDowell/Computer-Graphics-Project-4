@@ -35,20 +35,20 @@ export default function createWaterTrough() {
     const capThickness = wallThickness;
     const innerRadius = outerRadius - wallThickness; 
     
-    const correctedCapGeom = new THREE.CylinderGeometry(
+    const Cap = new THREE.CylinderGeometry(
         outerRadius, outerRadius, capThickness, 
         32, 1, false,
         Math.PI, Math.PI 
     );
     
-    correctedCapGeom.rotateZ(Math.PI / 2); 
+    Cap.rotateZ(Math.PI / 2); 
 
-    const cap1 = new THREE.Mesh(correctedCapGeom, darkGray);
+    const cap1 = new THREE.Mesh(Cap, darkGray);
 
     cap1.position.set(length / 2, outerRadius + wallThickness, 0); 
     trough.add(cap1);
 
-    const cap2 = new THREE.Mesh(correctedCapGeom, darkGray);
+    const cap2 = new THREE.Mesh(Cap, darkGray);
     
     cap2.position.set(-length / 2, outerRadius + wallThickness, 0); 
     trough.add(cap2);
@@ -57,8 +57,8 @@ export default function createWaterTrough() {
     const innerLength = length - (capThickness * 2); 
     const waterWidth = innerRadius * 2; 
     
-    const waterGeom = new THREE.BoxGeometry(innerLength, waterHeight, waterWidth);
-    const waterMesh = new THREE.Mesh(waterGeom, waterBlue);
+    const water = new THREE.BoxGeometry(innerLength, waterHeight, waterWidth);
+    const waterMesh = new THREE.Mesh(water, waterBlue);
 
     const waterFillLevel = 0.95; 
     
@@ -71,7 +71,6 @@ export default function createWaterTrough() {
     
     const leg = new THREE.BoxGeometry(0.2, 0.25, 0.2);
     
-    // Leg 1: Front Right
     const leg1 = new THREE.Mesh(leg, darkGray);
     leg1.position.set(-2.9, 0, 0);
     trough.add(leg1);
@@ -79,8 +78,6 @@ export default function createWaterTrough() {
     const leg2 = new THREE.Mesh(leg, darkGray);
     leg2.position.set(2.9, 0, 0);
     trough.add(leg2);
-
-    
 
     trough.position.set(-6.95, 0.25, 8.8);
 

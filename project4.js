@@ -176,10 +176,10 @@ function handleKeypress(event){
     ufo.position.set(0.0, ufo_alien_start_y_pos, 0.0);
     alien.position.set(0.0, ufo_alien_start_y_pos, 0.0);
 
-    camera.position.x = 0;
-    camera.position.y = cam_start_y;
-    camera.position.z = cam_start_z;
+    camera.position.set(0, cam_start_y, cam_start_z);
     camera.lookAt(0,0,0);
+    controls.target.set(0,0,0);
+    controls.update();
 
     clock.stop();
     bg_audio.stop();

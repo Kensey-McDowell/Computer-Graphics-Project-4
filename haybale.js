@@ -6,11 +6,14 @@ import * as THREE from 'three';
 
 export default function createHayBale() {
     const haybale = new THREE.Group();
-    const textloader = new THREE.TextureLoader();
+    const hay_texture = new THREE.TextureLoader().load("./assets/haytexture.png");
+    hay_texture.repeat.set(0.25, 0.25);
 
     const bale = new THREE.Mesh(
         new THREE.CylinderGeometry(1.5, 1.5, 3),
-        new THREE.MeshStandardMaterial({ roughness: 0.4, metalness: 0.0 })
+        new THREE.MeshStandardMaterial({ 
+          map: hay_texture,
+        })
     );
 
     bale.rotation.z = Math.PI/2;

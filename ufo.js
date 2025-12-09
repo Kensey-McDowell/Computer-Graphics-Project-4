@@ -87,7 +87,7 @@ function createUFOGroup(){
     const tractor_beam = new THREE.Mesh(
         new THREE.BoxGeometry(
             2,                          // width
-            ufo_height,                 // height
+            ufo_height + 1,                 // height
             2                           // depth
         ), translucent_yellow
     );
